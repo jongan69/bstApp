@@ -10,15 +10,34 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.15.0",
+    "@reduxjs/toolkit": "^1.8.1",
+    "@walletconnect/react-native-dapp": "^1.7.8",
+    "base-64": "^1.0.0",
+    "buffer": "^6.0.3",
     "expo": "~44.0.0",
+    "expo-crypto-polyfills": "^1.1.0",
+    "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
+    "process": "^0.11.10",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
+    "react-native-dotenv": "^3.3.1",
+    "react-native-get-random-values": "~1.7.0",
+    "react-native-reanimated": "~2.3.1",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-svg-transformer": "^1.0.0",
+    "react-native-web": "0.17.1",
+    "react-query": "^3.38.1",
+    "react-redux": "^8.0.1",
+    "tailwind-rn": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12",
+    "typescript": "~4.3.5"
   },
   "private": true
 }
