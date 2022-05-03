@@ -34,8 +34,8 @@ export default function TransferScreen() {
               Moving NFTs costs gas, We're working on it. NFTs can be bought, sold or traded to logged in wallet.
             </Text>            
             <Text> Minting Contract Address is: 0x4f29FbeE650c3eA006a174547a2F4e74c02a2Be5</Text>
-            { connector.chainId === 111 && <Text style={{ color: 'green' }}> USING CORRECT NETWORK! ENJOY </Text>}
-            { connector.chainId != 111 && <Text style={{ color: 'red' }}> USING INNCORRECT NETWORK! PLEASE CHANGE </Text>}
+            { connector.chainId === 3 && <Text style={{ color: 'green' }}> USING CORRECT NETWORK! ENJOY </Text>}
+            { connector.chainId != 3 && <Text style={{ color: 'red' }}> USING INNCORRECT NETWORK! PLEASE CHANGE </Text>}
 
 
             <Text style={{ fontSize: 10, padding: 10 }}> To get started, you must switch to Velas (VLX) for multichain</Text>
@@ -50,15 +50,15 @@ export default function TransferScreen() {
 
             <Text style={{ fontSize: 10, padding: 5 }}> Client ID: {connector.clientId}</Text>
             <Button
-              title='Change to VLX'
+              title='Change to Rinkeby'
               onPress={() => {
                 connector.updateChain({ 
-                  chainId: 111, 
-                  networkId: 0, 
-                  rpcUrl: "https://explorer.testnet.velas.com/rpc", 
+                  chainId: 4, 
+                  networkId: 3, 
+                  rpcUrl: "https://rinkeby.infura.io/v3/", 
                   nativeCurrency: { 
-                    name: "Velas Testnet",
-                    symbol: "VLX"
+                    name: "Rinkeby Test Network",
+                    symbol: "ETH"
                    }
                 }).catch(
                   Alert.alert('Wallet Network Info', connector.chainId)
