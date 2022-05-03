@@ -41,7 +41,7 @@ const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & 
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
       <TouchableOpacity
-        onPress={() => WebBrowser.openBrowserAsync('https://github.com/jongan69/collectifi')}
+        onPress={() => WebBrowser.openBrowserAsync('https://github.com/jongan69/bstApp')}
         style={{
           position: 'absolute',
           right: 0,
