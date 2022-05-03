@@ -6,16 +6,15 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import store from "./reduxToolkit/store";
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
-import { StyleSheet, View, LogBox, Platform, Text } from "react-native";
+import { StyleSheet, View, LogBox, Platform, Text, ActivityIndicator } from "react-native";
 import { Provider } from "react-redux";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { TailwindProvider } from 'tailwind-rn';
-import WalletConnectProvider, { useWalletConnect } from "@walletconnect/react-native-dapp";
+import WalletConnectProvider from "@walletconnect/react-native-dapp";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import WalletConnectButton from "./components/WalletConnect";
+import Navigation from './navigation';
+import utilities from './tailwind.json';
 
-// import utilities from './tailwind.json';
-// import Navigation from './navigation';
+import { QueryClient, QueryClientProvider } from "react-query";
 // import { API_URL } from "@env"
 LogBox.ignoreAllLogs();
 
@@ -24,18 +23,14 @@ const SCHEME_FROM_APP_JSON = 'bst'
 
 
 export default function App() {
-  const connector = useWalletConnect();
-  // const queryClient = new QueryClient();
-  // const colorScheme = useColorScheme();
   const isLoadingComplete = useCachedResources();
-
-  const connectWallet = React.useCallback(() => {
-    return connector.connect();
-  }, [connector]);
+  const colorScheme = useColorScheme();
+  // const queryClient = new QueryClient();
 
   if (!isLoadingComplete) {
     return (
       <View style={styles.loader}>
+        <ActivityIndicator size="large" color="#00ff00"/>
         <Text> Loading...  </Text>
       </View>
     );
@@ -49,27 +44,15 @@ export default function App() {
         }
         storageOptions={{
           asyncStorage: AsyncStorage,
-        }}
-      >
-        {/* <TailwindProvider utilities={utilities}> */}
-        <Provider store={store}>
-          <StatusBar />
-          <SafeAreaProvider>
-            <View style={styles.container}>
-              {!connector.connected ? (
-                <>
-                  <WalletConnectButton />
-                </>
-              ) : (
-                <>
-                  <Text> Something happened on login </Text>
-                  <WalletConnectButton />
-                </>
-              )}
-            </View>
-          </SafeAreaProvider>
-        </Provider>
-        {/* </TailwindProvider> */}
+        }}>
+        <TailwindProvider utilities={utilities}>
+          <Provider store={store}>
+            <StatusBar />
+            <SafeAreaProvider>
+              <Navigation colorScheme={colorScheme} />
+            </SafeAreaProvider>
+          </Provider>
+        </TailwindProvider>
       </WalletConnectProvider>
     );
   }
