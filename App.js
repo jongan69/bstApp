@@ -30,7 +30,7 @@ export default function App() {
   if (!isLoadingComplete) {
     return (
       <View style={styles.loader}>
-        <ActivityIndicator size="large" color="#00ff00"/>
+        <ActivityIndicator size="large" color="#00ff00" />
         <Text> Loading...  </Text>
       </View>
     );

@@ -7,20 +7,19 @@ import * as React from 'react';
 import { View, Text, TouchableOpacity, ScrollViewProps, ColorSchemeName } from 'react-native';
 import GalleryScreen from '../screens/GalleryScreen';
 import TransferScreen from '../screens/TransferScreen';
-import { DrawerParamList, HomeParamList, GalleryParamList, WalletParamList, TransferParamList } from '../types';
+import { DrawerParamList, HomeParamList, ProfileParamList, GalleryParamList, TransferParamList } from '../types';
 import HomeScreen from '../screens/HomeScreen';
 import Constants from "expo-constants"
 import { DrawerNavigationHelpers, DrawerDescriptorMap } from '@react-navigation/drawer/lib/typescript/src/types';
 import { DrawerNavigationState, ParamListBase } from '@react-navigation/native';
 import * as WebBrowser from 'expo-web-browser';
-import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import WalletConnectButton from '../components/WalletConnect';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const version = Constants?.manifest?.version
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
-const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & { children: React.ReactNode; }) | (JSX.IntrinsicAttributes & Omit<DrawerContentOptions, "style" | "contentContainerStyle"> & { state: DrawerNavigationState<ParamListBase>; navigation: DrawerNavigationHelpers; descriptors: DrawerDescriptorMap; colorScheme : { colorScheme: ColorSchemeName }   })) => {
-  const connector = useWalletConnect();
+const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & { children: React.ReactNode; }) | (JSX.IntrinsicAttributes & Omit<DrawerContentOptions, "style" | "contentContainerStyle"> & { state: DrawerNavigationState<ParamListBase>; navigation: DrawerNavigationHelpers; descriptors: DrawerDescriptorMap; colorScheme: { colorScheme: ColorSchemeName } })) => {
   console.log('APP VERSION NUMBER: ', version)
   return (
     <View style={{ flex: 1 }}>
@@ -31,11 +30,10 @@ const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & 
             justifyContent: 'space-between',
             alignItems: 'center',
             padding: 20,
-            // backgroundColor: '#f6f6f6',
+            backgroundColor: '#f6f6f6',
             marginBottom: 20,
           }}
         >
-          {/* <Text>{connector.accounts[0]}</Text> */}
           <WalletConnectButton />
         </View>
         <DrawerItemList {...props} />
@@ -51,7 +49,6 @@ const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & 
           padding: 20,
         }}
       >
-
         <Text>Tap for Github</Text>
         <Text style={{ color: 'red' }}>Version: {version}</Text>
       </TouchableOpacity>
@@ -66,20 +63,26 @@ export default function DrawerNavigator() {
     >
       <Drawer.Screen
         name="Home"
-        component={HomeNavigator} 
-        options={{ headerShown: false}}
-        />
+        component={HomeNavigator}
+        options={{ headerShown: false }}
+      />
 
       <Drawer.Screen
+        name="Profile"
+        component={ProfileNavigator}
+        options={{ headerShown: false }}
+      />
+
+<Drawer.Screen
         name="Gallery"
-        component={GalleryNavigator} 
-        options={{ headerShown: false}}
-        />
+        component={GalleryNavigator}
+        options={{ headerShown: false }}
+      />
 
       <Drawer.Screen
         name="Transfer"
         component={TransferNavigator}
-        options={{ headerShown: false}}
+        options={{ headerShown: false }}
       />
     </Drawer.Navigator>
   );
@@ -92,9 +95,23 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerShadowVisible: false}}
+        options={{ headerShadowVisible: false }}
       />
     </HomeStack.Navigator>
+  )
+}
+
+const ProfileStack = createStackNavigator<ProfileParamList>();
+
+function ProfileNavigator() {
+  return (
+    < ProfileStack.Navigator>
+      <ProfileStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShadowVisible: false }}
+      />
+    </ ProfileStack.Navigator>
   )
 }
 
@@ -106,7 +123,7 @@ function GalleryNavigator() {
       <GalleryStack.Screen
         name="Gallery"
         component={GalleryScreen}
-        options={{ headerShadowVisible: false}}
+        options={{ headerShadowVisible: false }}
       />
     </GalleryStack.Navigator>
   )
@@ -121,7 +138,7 @@ function TransferNavigator() {
       <TransferStack.Screen
         name="Transfer"
         component={TransferScreen}
-        options={{ headerShadowVisible: false}}
+        options={{ headerShadowVisible: false }}
       />
     </TransferStack.Navigator>
   )

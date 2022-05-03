@@ -10,8 +10,6 @@ import MenuIcon from '../components/MenuIcon';
 import { useEffect, useState } from 'react';
 import main from '../styles/main';
 import { useWalletConnect } from "@walletconnect/react-native-dapp";
-// import OrderItem from '../components/OrderItem';
-
 
 export default function GalleryScreen() {
   const navigation = useNavigation();
@@ -64,30 +62,26 @@ export default function GalleryScreen() {
           </>
         } />
     })
-};
+  };
 
+  return (
+    <View style={main.centered}>
+      {connector.accounts[0]
+        ?
+        <>
+          <Text
+            style={[main.centered, { marginTop: 10, marginBottom: '0%' }]}
+            lightColor="rgba(0,0,0,0.8)"
+            darkColor="rgba(255,255,255,0.8)"
+          >
+            Minted NFTs (Rinkeby):
 
+          </Text>
+          {nfts
+            ? <Text style={{ fontSize: 5 }}>{list()}</Text>
+            : <Text> No Minted NFTS </Text>}
 
-return (
-  <View style={main.centered}>
-    {connector.accounts[0]
-      ?
-      <>
-        <Text
-          style={[main.centered, { marginTop: 10, marginBottom: '0%' }]}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
-          Minted NFTs (Rinkeby):
-
-        </Text>
-        { nfts
-          ? <Text style={{ fontSize: 5 }}>{list()}</Text>
-          : <Text> No Minted NFTS </Text>}
-       
-
-
-        {/* <Text
+          <Text
             style={[main.centered, { marginTop: 10, marginBottom: '10%' }]}
             lightColor="rgba(0,0,0,0.8)"
             darkColor="rgba(255,255,255,0.8)"
@@ -110,18 +104,18 @@ return (
             darkColor="rgba(255,255,255,0.8)"
           >
             Avalanche NFTs:
-          </Text> */}
-      </>
-      :
-      <Text
-        lightColor="rgba(0,0,0,0.8)"
-        darkColor="rgba(255,255,255,0.8)"
-      >
-        No Wallet Connected
-      </Text>
-    }
-  </View>
-)
+          </Text>
+        </>
+        :
+        <Text
+          lightColor="rgba(0,0,0,0.8)"
+          darkColor="rgba(255,255,255,0.8)"
+        >
+          No Wallet Connected
+        </Text>
+      }
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({

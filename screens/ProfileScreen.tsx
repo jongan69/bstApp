@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/core";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,32 +7,34 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-  StyleSheet
+  StyleSheet,
+  TouchableWithoutFeedback,
 } from "react-native";
+import MenuIcon from '../components/MenuIcon';
 import tw from 'twrnc';
-import Header from "../components/Header";
 import { useWalletConnect } from "@walletconnect/react-native-dapp";
 import WalletConnectButton from "../components/WalletConnect";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector, logOut, logIn } from "../reduxToolkit/userSlice";
 
-import { FontAwesome, Ionicons, SimpleLineIcons, Fontisto } from "@expo/vector-icons";
-import Constants from 'expo-constants';
 
 export default function ProfileScreen() {
 
   const dispatch = useDispatch()
   const user = useSelector(userSelector);
-  const [name, setName] = useState(user.name || "N/A");
-  const [email, setEmail] = useState(user.email || "N/A");
-  const [phone, setPhone] = useState(user.phone || "N/A");
-  // const navigation = useNavigation();
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const navigation = useNavigation();
+  const incomplete = !name || !email || !phone;
+  const connector = useWalletConnect();
 
-  // _handleOpenWithWebBrowser = () => {
-  //   const url = 'https://marketplace-xi.vercel.app/'
-  //   console.log('EXPORT CONSTANTS: ', Constants.linkingUri)
-  //   WebBrowser.openAuthSessionAsync(url);
-  // };
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: (_props: StackHeaderLeftButtonProps) => (<MenuIcon />)
+    });
+  });
+
 
   function Button({ onPress, label }) {
     return (
@@ -42,19 +44,10 @@ export default function ProfileScreen() {
     );
   }
 
-  const incomplete = !name || !email || !phone;
-  const connector = useWalletConnect();
-
-  const connectWallet = React.useCallback(async () => {
-    return connector.connect()
-  }, [connector]);
-
-
   const killSession = React.useCallback(() => {
     dispatch(logOut())
     return connector.killSession();
   }, [connector]);
-
 
   const shortenAddress = (address) => {
     return `${address.slice(0, 6)}...${address.slice(
@@ -71,39 +64,51 @@ export default function ProfileScreen() {
     return
   }
 
-  return (
-    <SafeAreaView style={tw.style('flex-1')} onPress={Keyboard.dismiss}>
-      <View style={tw.style("flex-1 pt-1")}>
-        <Header title="Profile" />
-        <View style={tw.style("flex-1 items-center pt-0")}>
-          <Text style={tw.style("text-center p-4 font-black text-3xl text-red-400")}>
-            Collectifi
-          </Text>
+  const HideKeyboard = ({ children }) => (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} accessible={false}>
+      {children}
+    </TouchableWithoutFeedback>
+  );
 
-          {!incomplete && connector?.accounts[0]
+  return (
+    <HideKeyboard>
+    <SafeAreaView style={tw.style('flex-1')}>
+        <View style={tw.style("flex-1 items-center pt-0")}>
+          <Text style={tw.style("text-center p-4 font-black text-3xl text-black-400")}>
+            BST
+          </Text>
+          
+          {!incomplete || !connector.accounts[0]
             ?
-            <View>
+            <View style={{ margin: 10}} >
               <Text style={tw.style("text-xl text-gray-500 p-4 font-bold")}>
                 Current Wallet {shortenAddress(connector?.accounts[0])}
               </Text>
               <Text style={tw.style("text-xl text-gray-500 p-4 font-bold")}>
-                Name: {user.name}
+                Name: {name}
               </Text>
               <Text style={tw.style("text-xl text-gray-500 p-4 font-bold")}>
-                Email: {user.email}
+                Email: {email}
               </Text>
               <Text style={tw.style("text-xl text-gray-500 p-4 font-bold")}>
-                Phone: {user.phone}
+                Phone: {phone}
               </Text>
               <Button onPress={killSession} label="Log out" />
+              <Button onPress={() => {
+                setPhone(null),
+                setEmail(null),
+                setName(null)
+              }} label="Clear Messaging Data" />
             </View>
             :
             <>
               <Text style={tw.style("text-xl text-gray-500 p-0 font-bold")}>
-                Welcome to Collectifi!
+                Buy Sell Trade
               </Text>
+
+              <Text style={tw.style("text-m text-gray-500 p-5 font-bold")}> In order to use messaging services you must add some user data</Text>
               <Text style={tw.style("text-center p-2 font-bold text-blue-500")}>
-                Step 1: The Name
+                Step 1: User name
               </Text>
 
               {/* USER DATA WE CAN STORE IN REDUX TOOLKIT SLICE */}
@@ -111,7 +116,7 @@ export default function ProfileScreen() {
                 value={name}
                 onChangeText={setName}
                 style={tw.style("text-center text-xl pb-2")}
-                placeholder="Enter your Full Name"
+                placeholder="Enter your User Name"
               />
 
               <Text style={tw.style("text-center p-4 font-bold text-blue-500")}>
@@ -137,34 +142,17 @@ export default function ProfileScreen() {
                 onEndEditing={Keyboard.dismiss}
               />
                             <Text style={tw.style("text-center p-2 font-bold text-blue-500")}>
-                Step 4: The Wallet
+                Linked Wallet
               </Text>
               <WalletConnectButton />
-              
-              {/* {incomplete ? null 
-              :
-              <TouchableOpacity
-              // onPress={updateUserProfile}
-              // onPress={this._handleOpenWithWebBrowser}
-              onPress={updateUserProfile(user, connector.accounts[0])}
-              disabled={incomplete}
-              style={[
-                tw.style("w-64 p-3 rounded-xl absolute bottom-10"),
-                incomplete ? tw.style("bg-gray-400") : tw.style("bg-red-400"),
-              ]}
-            >
-              <Text style={tw.style("text-center text-white text-xl")}  >
-                Update Profile
-              </Text>
-            </TouchableOpacity>
-              } */}
             </>
           }
         </View>
-      </View>
+      {/* </View> */}
     </SafeAreaView>
+    </HideKeyboard>
   );
-};
+}
 
 const styles = StyleSheet.create({
   button: {
@@ -173,6 +161,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 12,
+    margin: 20
   },
   text: {
     color: "#FFFFFF",

@@ -1,0 +1,67 @@
+{
+  "feed": [
+    {
+      "id": 0,
+      "username": "@matheuscastroweb",
+      "tags": "#testvideo #reactnative #tiktok #git #development #github #clone #react",
+      "music": "Introducing Chromecast. The easiest way to enjoy",
+      "likes": 9444,
+      "comments": 6340,
+      "uri": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+    },
+    {
+      "id": 1,
+      "username": "@matheuscastroweb",
+      "tags": "#reactnative #testvideo #tiktok #git #development #github #clone #react",
+      "music": "HBO GO now works with Chromecast",
+      "likes": 8411,
+      "comments": 2240,
+      "uri": "https://v16m-webapp.tiktokcdn-us.com/6de79c28191b09b01d0d5af63987c4a2/6271febe/video/tos/useast5/tos-useast5-ve-0068c002-tx/17a5fe27dbe340aa9f5225cc8fa28dd8/?a=1988&br=1418&bt=709&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=ebtHKH-qMyq8ZPjSjwe2NeSRfl7Gb&l=20220503221856010113006040001A5CD1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=anZvPDk6ZjVrPDMzZzczNEApaDs2ODk7NmRmNzo7OTk3OGctX2NhcjRnNDRgLS1kMS9zczNjX18zYTEuLmMzYV9eYi86Yw%3D%3D&vl=&vr="
+    },
+    {
+      "id": 2,
+      "username": "@matheuscastroweb",
+      "tags": "#reactnative #testvideo #tiktok #git #development #github #clone #react",
+      "music": "HBO GO now works with Chromecast",
+      "likes": 8411,
+      "comments": 2240,
+      "uri": "https://v16m-webapp.tiktokcdn-us.com/6de79c28191b09b01d0d5af63987c4a2/6271febe/video/tos/useast5/tos-useast5-ve-0068c002-tx/17a5fe27dbe340aa9f5225cc8fa28dd8/?a=1988&br=1418&bt=709&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=ebtHKH-qMyq8ZPjSjwe2NeSRfl7Gb&l=20220503221856010113006040001A5CD1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=anZvPDk6ZjVrPDMzZzczNEApaDs2ODk7NmRmNzo7OTk3OGctX2NhcjRnNDRgLS1kMS9zczNjX18zYTEuLmMzYV9eYi86Yw%3D%3D&vl=&vr="
+    },
+    {
+      "id": 3,
+      "username": "@matheuscastroweb",
+      "tags": "#reactnative #testvideo #tiktok #git #development #github #clone #react",
+      "music": "HBO GO now works with Chromecast",
+      "likes": 8411,
+      "comments": 2240,
+      "uri": "https://v16m-webapp.tiktokcdn-us.com/6de79c28191b09b01d0d5af63987c4a2/6271febe/video/tos/useast5/tos-useast5-ve-0068c002-tx/17a5fe27dbe340aa9f5225cc8fa28dd8/?a=1988&br=1418&bt=709&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=ebtHKH-qMyq8ZPjSjwe2NeSRfl7Gb&l=20220503221856010113006040001A5CD1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=anZvPDk6ZjVrPDMzZzczNEApaDs2ODk7NmRmNzo7OTk3OGctX2NhcjRnNDRgLS1kMS9zczNjX18zYTEuLmMzYV9eYi86Yw%3D%3D&vl=&vr="
+    },
+    {
+      "id": 4,
+      "username": "@matheuscastroweb",
+      "tags": "#reactnative #testvideo #tiktok #git #development #github #clone #react",
+      "music": "HBO GO now works with Chromecast",
+      "likes": 8411,
+      "comments": 2240,
+      "uri": "https://v16m-webapp.tiktokcdn-us.com/6de79c28191b09b01d0d5af63987c4a2/6271febe/video/tos/useast5/tos-useast5-ve-0068c002-tx/17a5fe27dbe340aa9f5225cc8fa28dd8/?a=1988&br=1418&bt=709&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=ebtHKH-qMyq8ZPjSjwe2NeSRfl7Gb&l=20220503221856010113006040001A5CD1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=anZvPDk6ZjVrPDMzZzczNEApaDs2ODk7NmRmNzo7OTk3OGctX2NhcjRnNDRgLS1kMS9zczNjX18zYTEuLmMzYV9eYi86Yw%3D%3D&vl=&vr="
+    },
+    {
+      "id": 5,
+      "username": "@matheuscastroweb",
+      "tags": "#reactnative #testvideo #tiktok #git #development #github #clone #react",
+      "music": "HBO GO now works with Chromecast",
+      "likes": 8411,
+      "comments": 2240,
+      "uri": "https://v16m-webapp.tiktokcdn-us.com/6de79c28191b09b01d0d5af63987c4a2/6271febe/video/tos/useast5/tos-useast5-ve-0068c002-tx/17a5fe27dbe340aa9f5225cc8fa28dd8/?a=1988&br=1418&bt=709&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=ebtHKH-qMyq8ZPjSjwe2NeSRfl7Gb&l=20220503221856010113006040001A5CD1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=anZvPDk6ZjVrPDMzZzczNEApaDs2ODk7NmRmNzo7OTk3OGctX2NhcjRnNDRgLS1kMS9zczNjX18zYTEuLmMzYV9eYi86Yw%3D%3D&vl=&vr="
+    },
+    {
+      "id": 6,
+      "username": "@matheuscastroweb",
+      "tags": "#reactnative #testvideo #tiktok #git #development #github #clone #react",
+      "music": "HBO GO now works with Chromecast",
+      "likes": 8411,
+      "comments": 2240,
+      "uri": "https://v16m-webapp.tiktokcdn-us.com/6de79c28191b09b01d0d5af63987c4a2/6271febe/video/tos/useast5/tos-useast5-ve-0068c002-tx/17a5fe27dbe340aa9f5225cc8fa28dd8/?a=1988&br=1418&bt=709&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=ebtHKH-qMyq8ZPjSjwe2NeSRfl7Gb&l=20220503221856010113006040001A5CD1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=anZvPDk6ZjVrPDMzZzczNEApaDs2ODk7NmRmNzo7OTk3OGctX2NhcjRnNDRgLS1kMS9zczNjX18zYTEuLmMzYV9eYi86Yw%3D%3D&vl=&vr="
+    }
+  ]
+}

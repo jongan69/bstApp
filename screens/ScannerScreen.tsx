@@ -1,5 +1,4 @@
 
-
 import React, { useState, useRef, useEffect } from 'react';
 import {
   StyleSheet,
@@ -9,17 +8,15 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Alert,
-  Image,
   ActivityIndicator
 } from 'react-native';
 import { Camera } from 'expo-camera';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-import { addToCart } from "../reduxToolkit/cartSlice";
 import { useDispatch } from "react-redux";
 import Clarifai from 'clarifai'
-import tw from 'twrnc';
 import { useWalletConnect } from "@walletconnect/react-native-dapp";
+import tw from 'twrnc';
 
 const apiUrl = 'https://api.cloudinary.com/v1_1/dp8lp5b68/image/upload';
 const CLARIFAY_KEY = "83e67f71dd034c60b784e4a050228303"
@@ -33,12 +30,12 @@ export default function ScannerScreen() {
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
   const [isPreview, setIsPreview] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
+  const navigation = useNavigation();
+  const [bluntVerified, setBluntVerified] = useState(false)
+
   const [items, setItems] = useState(null);
   const dispatch = useDispatch();
   const [scanned, setScanned] = useState(false)
-  const navigation = useNavigation();
-
-  const [bluntVerified, setBluntVerified] = useState(false)
   const [aiData, setAiData] = useState(null)
 
   const clarifai = new Clarifai.App({
@@ -68,9 +65,6 @@ export default function ScannerScreen() {
         : Camera.Constants.Type.back
     );
   };
-
-
-
 
   const onSnap = async () => {
     if (cameraRef.current) {
@@ -183,17 +177,17 @@ export default function ScannerScreen() {
         />
         <View style={styles.container}>
           {isPreview && (
-            <> 
-            <View style={{ alignSelf: 'center', padding: '80%' }}>
-            {!bluntVerified  && <ActivityIndicator size="large" color="#00ff00"/>}
-            </View>
-            <TouchableOpacity
-              onPress={cancelPreview}
-              style={styles.closeButton}
-              activeOpacity={0.7}
-            >
-              <AntDesign name='close' size={32} color='#fff' />
-            </TouchableOpacity>
+            <>
+              <View style={{ alignSelf: 'center', padding: '80%' }}>
+                {!bluntVerified && <ActivityIndicator size="large" color="#00ff00" />}
+              </View>
+              <TouchableOpacity
+                onPress={cancelPreview}
+                style={styles.closeButton}
+                activeOpacity={0.7}
+              >
+                <AntDesign name='close' size={32} color='#fff' />
+              </TouchableOpacity>
             </>
           )}
           {!isPreview && (

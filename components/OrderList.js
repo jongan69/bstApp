@@ -3,11 +3,8 @@ import { FlatList, Text, View, ActivityIndicator } from "react-native";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import tw from 'twrnc';
-// import useAuth from "../hooks/useAuth";
-// import { fetchBasket } from "../lib/firebase";
-import { selectItem } from "../reduxToolkit/cartSlice";
 import OrderItem from "./OrderItem";
-import Checkout from "../components/Checkout";
+import Checkout from "../Checkout";
 
 function renderFooter(nfts, total) {
   if (!nfts) return null;

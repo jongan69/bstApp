@@ -13,23 +13,26 @@ export type RootStackParamList = {
 
 export type DrawerParamList = {
   Home: undefined;
+  Profile: undefined;
   Gallery: undefined;
-  Wallet: undefined;
   Transfer: undefined;
 };
-
 
 
 export type HomeParamList = {
   Home: undefined;
 };
 
-export type GalleryParamList = {
-  Gallery: undefined;
+export type ProfileParamList = {
+  Profile: undefined;
 };
 
-export type WalletParamList = {
-  Wallet: undefined;
+export type MessagingParamList = {
+  Messaging: undefined;
+};
+
+export type GalleryParamList = {
+  Gallery: undefined;
 };
 
 export type TransferParamList = {
@@ -37,7 +40,7 @@ export type TransferParamList = {
 };
 
 export type ScanParamList = {
-  ScanScreen: undefined;
+  Scan: undefined;
 };
 
 export type onPressFunc = (event: GestureResponderEvent) => void;

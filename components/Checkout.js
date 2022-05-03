@@ -2,17 +2,12 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
-import { CHECKOUT_URL } from "@env";
 import tw from 'twrnc';
 import { useDispatch } from "react-redux"; 
-import { emptyCart } from "../reduxToolkit/cartSlice";
-// import useAuth from "../hooks/useAuth";
 import { StackActions } from '@react-navigation/native';
 
 const Checkout = ({ orderDetails }) => {
-  // const { user } = useAuth();
   const { total, name } = orderDetails
-  // const stripe = useStripe();
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [checkedout, setCheckedOut] = useState(false)
@@ -61,7 +56,6 @@ const Checkout = ({ orderDetails }) => {
       }
 
       navigation.navigate('Home')
-      dispatch(emptyCart())
       Alert.alert("purchased successfully! Welcome to the future.");
     } catch (err) {
 

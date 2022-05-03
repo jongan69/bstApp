@@ -3,8 +3,6 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import tw from 'twrnc';
-import { truncate } from "../lib/truncate";
-import { removeFromCart } from "../reduxToolkit/cartSlice";
 
 const OrderItem = ({ orderDetails }) => {
   const navigate = useNavigation();
@@ -28,7 +26,7 @@ const OrderItem = ({ orderDetails }) => {
       />
 
       <Text style={tw.style("text-lg font-semibold")}>
-        {truncate(name, 16)}
+       {name}
       </Text>
       <Text>${truncate(price, 6)}</Text>
     </TouchableOpacity>
