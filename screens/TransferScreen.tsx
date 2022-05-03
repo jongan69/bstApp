@@ -33,9 +33,10 @@ export default function TransferScreen() {
             >
               Moving NFTs costs gas, We're working on it. NFTs can be bought, sold or traded to logged in wallet.
             </Text>            
-
+            <Text> Minting Contract Address is: 0x4f29FbeE650c3eA006a174547a2F4e74c02a2Be5</Text>
             { connector.chainId === 111 && <Text style={{ color: 'green' }}> USING CORRECT NETWORK! ENJOY </Text>}
             { connector.chainId != 111 && <Text style={{ color: 'red' }}> USING INNCORRECT NETWORK! PLEASE CHANGE </Text>}
+
 
             <Text style={{ fontSize: 10, padding: 10 }}> To get started, you must switch to Velas (VLX) for multichain</Text>
             <Text style={{ fontSize: 10, padding: 5 }}> Current Chain ID: {connector.chainId}</Text>
