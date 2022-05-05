@@ -6,19 +6,19 @@ export default {
     screens: {
       Root: {
         screens: {
+          Welcome: {
+            screens: {
+              WelcomeScreen: 'welcome'
+            }
+          },
           Home: {
             screens: {
-              Home: 'home'
+              HomeScreen: 'home'
             }
           },
-          Gallery: {
+          Scan: {
             screens: {
-              GalleryScreen: 'gallery'
-            }
-          },
-          Wallet: {
-            screens: {
-              WalletScreen: 'wallet'
+              ProfileScreen: 'scan'
             }
           },
         },

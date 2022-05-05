@@ -8,7 +8,6 @@ import { RootStackParamList } from '../types';
 import DrawerNavigator from './DrawerNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import ScannerScreen from '../screens/ScannerScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -20,7 +19,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      theme={colorScheme === 'dark' ? DarkTheme : DarkTheme}
       >
       <RootNavigator />
     </NavigationContainer>
@@ -54,7 +53,6 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{headerShown: false}} >
       <Stack.Screen name="Welcome" component={WelcomeScreen}/>
       <Stack.Screen name="Home" component={DrawerNavigator} options={verticalAnimation}/>
-      {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
       <Stack.Screen name="Scan" component={ScannerScreen}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>

@@ -38,6 +38,7 @@ const HomeScreen = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
+    setTab(1)
     //Get device Height
     setHeight(Dimensions.get('window').height);
     //Get device Width
@@ -50,13 +51,12 @@ const HomeScreen = () => {
           onPress={() => navigation.navigate("Scan")}
         >
           <FontAwesome
-            style={{ borderWidth: 5, borderColor: 'black', borderRadius: 20, margin: 10, marginRight: 20 }}
-            name="camera-retro" size={14} color="orange" />
+            style={{ borderWidth: 5, borderColor: 'white', borderRadius: 20, margin: 10, marginRight: 20 }}
+            name="camera-retro" size={12} color="orange" />
         </TouchableOpacity>
       )
     });
   });
-
 
   const _loadMoreContentAsync = async () => {
     const url = 'https://google.com'
@@ -78,11 +78,11 @@ const HomeScreen = () => {
       <Container>
         <Header>
           <Tab onPress={() => setTab(1)}>
-            <Text active={tab === 1}>Following</Text>
+            <Text active={tab === 1}>Browse</Text>
           </Tab>
           <Separator>|</Separator>
-          <Tab onPress={() => setTab(2)}>
-            <Text active={tab === 2}>For You</Text>
+          <Tab onPress={() => {setTab(2), navigation.navigate("Scan")}}>
+            <Text active={tab === 2}>Mint</Text>
           </Tab>
         </Header>
         <ViewPager
@@ -98,6 +98,7 @@ const HomeScreen = () => {
               <Feed item={item} play={Number(item.id) === active} />
             </View>
           ))}
+
         </ViewPager>
       </Container>
     </SafeAreaView>

@@ -15,7 +15,7 @@ export default function MenuIcon() {
 
   return (
     <TouchableOpacity onPress={openDrawer}>
-      <Feather name="menu" size={24} style={{marginLeft: 25}}/>
+      <Feather name="menu" size={24} style={{marginLeft: 25, color: 'white'}}/>
     </TouchableOpacity>
   );
 };

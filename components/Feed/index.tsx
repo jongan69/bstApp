@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Animated, Easing } from 'react-native';
+import { Image, Animated, Easing, View } from 'react-native';
 
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
 import { Video } from 'expo-av';
@@ -22,6 +22,7 @@ import {
 
 interface Item {
   id: number;
+  ownerAddress: string;
   username: string;
   tags: string;
   music: string;
@@ -37,6 +38,8 @@ interface Props {
 
 const Feed: React.FC<Props> = ({ play, item }) => {
   const spinValue = new Animated.Value(0);
+  const [status, setStatus] = React.useState({});
+  const video = React.useRef(null);
 
   Animated.loop(
     Animated.timing(spinValue, {
@@ -54,6 +57,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
 
   return (
     <>
+
       <LinearGradient
         colors={['rgba(0,0,0,.3)', 'transparent']}
         style={{
@@ -64,30 +68,48 @@ const Feed: React.FC<Props> = ({ play, item }) => {
           height: '70%',
         }}
       />
-      <Container>
-        <Video
-          source={{ uri: item.uri }}
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode="cover"
-          shouldPlay={play}
-          isLooping
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
-        />
+      
+      <Container  onPress={() =>  status.isPlaying ? pauseAsync() : playAsync()}>
+          <Video
+            source={{ uri: item.uri }}
+            rate={1.0}
+            volume={1.0}
+            isMuted={false}
+            resizeMode="cover"
+            shouldPlay={play}
+            onPlaybackStatusUpdate={status => setStatus(() => status)}
+            isLooping
+            ref={video}
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+          />
       </Container>
+
       <Details>
         <User>{item.username}</User>
-        <Tags>{item.tags}</Tags>
+        {/* <Tags>{item.tags}</Tags> */}
         <MusicBox>
-          <FontAwesome name="music" size={15} color="#f5f5f5" />
-          <Music>{item.music}</Music>
+          <FontAwesome name="home" size={15} color="#f5f5f5" />
+          <Music>{item.ownerAddress}</Music>
         </MusicBox>
       </Details>
+
       <Actions>
+        <BoxAction>
+          <AntDesign
+            style={{ alignSelf: 'center' }}
+            name={status.isPlaying ? 'pause' : 'play'}
+            size={35}
+            color="#fff"
+            onPress={() =>
+              status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+            }
+          />
+
+        </BoxAction>
+
         <BoxAction>
           <AntDesign
             style={{ alignSelf: 'center' }}
@@ -97,6 +119,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
           />
           <TextAction>{item.likes}</TextAction>
         </BoxAction>
+
         <BoxAction>
           <FontAwesome
             style={{ alignSelf: 'center' }}
@@ -106,6 +129,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
           />
           <TextAction>{item.comments}</TextAction>
         </BoxAction>
+
         <BoxAction>
           <FontAwesome
             style={{ alignSelf: 'center' }}
@@ -115,6 +139,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
           />
           <TextAction>Share</TextAction>
         </BoxAction>
+
         <BoxAction>
           <Animated.View
             style={{
@@ -123,7 +148,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
               borderColor: '#292929',
               transform: [
                 {
-                  rotate: play ? rotateProp : 0,
+                  rotate: true ? rotateProp : 0,
                 },
               ],
             }}
@@ -135,7 +160,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
                 borderRadius: 25,
               }}
               source={{
-                uri: 'https://avatars3.githubusercontent.com/u/45601574',
+                uri: 'https://media-exp1.licdn.com/dms/image/D4E35AQEhkAHUyuef3A/profile-framedphoto-shrink_100_100/0/1650131500876?e=1651752000&v=beta&t=1O0nYJvtEUITd44C94CAVZmU2sBazNspypuHZjzNc08',
               }}
             />
           </Animated.View>

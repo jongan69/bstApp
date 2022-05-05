@@ -30,8 +30,12 @@ const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & 
             justifyContent: 'space-between',
             alignItems: 'center',
             padding: 20,
-            backgroundColor: '#f6f6f6',
+            margin: 5,
+            backgroundColor: '#ffffff',
+            borderColor: '#1bc3e0',
+            borderWidth: 2,
             marginBottom: 20,
+            borderRadius: 5,
           }}
         >
           <WalletConnectButton />
@@ -47,10 +51,14 @@ const CustomDrawer = (props: Key | (JSX.IntrinsicAttributes & ScrollViewProps & 
           bottom: 50,
           backgroundColor: '#f6f6f6',
           padding: 20,
+          borderRadius: 5,
+          margin: 5,
+          borderColor: '#1bc3e0',
+          borderWidth: 2
         }}
       >
         <Text>Tap for Github</Text>
-        <Text style={{ color: 'red' }}>Version: {version}</Text>
+        <Text style={{ color: '#1bc3e0' }}>Version: {version}</Text>
       </TouchableOpacity>
     </View>
   );
