@@ -19,7 +19,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DarkTheme}
+      theme={DarkTheme}
       >
       <RootNavigator />
     </NavigationContainer>
@@ -50,8 +50,8 @@ const verticalAnimation = {
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}} >
-      <Stack.Screen name="Welcome" component={WelcomeScreen}/>
+    <Stack.Navigator screenOptions={{headerShown: false }} >
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Home" component={DrawerNavigator} options={verticalAnimation}/>
       <Stack.Screen name="Scan" component={ScannerScreen}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />

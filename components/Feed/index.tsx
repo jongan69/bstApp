@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Animated, Easing, View } from 'react-native';
+import { Image, Animated, Easing, Text } from 'react-native';
 
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
 import { Video } from 'expo-av';
@@ -69,7 +69,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
         }}
       />
       
-      <Container  onPress={() =>  status.isPlaying ? pauseAsync() : playAsync()}>
+      <Container>
           <Video
             source={{ uri: item.uri }}
             rate={1.0}
@@ -77,7 +77,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
             isMuted={false}
             resizeMode="cover"
             shouldPlay={play}
-            onPlaybackStatusUpdate={status => setStatus(() => status)}
+            onPlaybackStatusUpdate={() => setStatus(() => status)}
             isLooping
             ref={video}
             style={{
@@ -92,6 +92,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
         {/* <Tags>{item.tags}</Tags> */}
         <MusicBox>
           <FontAwesome name="home" size={15} color="#f5f5f5" />
+          <Text> of Owner</Text>
           <Music>{item.ownerAddress}</Music>
         </MusicBox>
       </Details>

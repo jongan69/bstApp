@@ -17,7 +17,7 @@ import { FontAwesome } from '@expo/vector-icons'
 import Feed from '../components/Feed';
 import ViewPager from '@react-native-community/viewpager';
 
-import server from '../fakeServer.json';
+import server from '../server.json';
 import { Container, Header, Text, Tab, Separator } from '../styles/home';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
@@ -81,7 +81,10 @@ const HomeScreen = () => {
             <Text active={tab === 1}>Browse</Text>
           </Tab>
           <Separator>|</Separator>
-          <Tab onPress={() => {setTab(2), navigation.navigate("Scan")}}>
+          <Tab onPress={() => {
+            setTab(2)
+            navigation.navigate("Scan")
+          }}>
             <Text active={tab === 2}>Mint</Text>
           </Tab>
         </Header>
@@ -101,6 +104,7 @@ const HomeScreen = () => {
 
         </ViewPager>
       </Container>
+      <Text>Swipe left or right on videos</Text>
     </SafeAreaView>
   );
 };
